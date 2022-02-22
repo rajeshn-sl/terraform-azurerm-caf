@@ -11,7 +11,8 @@ resource "azurecaf_name" "rg" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = azurecaf_name.rg.result
+#  name     = azurecaf_name.rg.result
+  name     = var.global_settings.passthrough ? try(var.resource_group_name,azurecaf_name.rg.result) : azurecaf_name.rg.result
   location = var.global_settings.regions[lookup(var.settings, "region", var.global_settings.default_region)]
   tags = merge(
     var.tags,
