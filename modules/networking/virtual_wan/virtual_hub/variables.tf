@@ -4,6 +4,10 @@ variable "prefix" {
   default     = ""
 }
 
+variable "settings" {
+  description = "global settings override"
+}
+
 variable "global_settings" {
   description = "global settings"
 }
